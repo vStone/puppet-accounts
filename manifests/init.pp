@@ -1,0 +1,5 @@
+# == Class: accounts
+#
+class accounts {
+
+}
