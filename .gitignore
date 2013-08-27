@@ -1,0 +1,9 @@
+## Ruby stuff
+Gemfile.lock
+
+## Puppet packaging
+/pkg/
+
+## Editors
+*.swp
+
