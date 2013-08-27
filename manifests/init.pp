@@ -50,10 +50,10 @@ class accounts (
   ## Gets all users that have a uid configured.
   $all_users = hash_keys($_user_uids)
   ## Get the users that are not in the users array.
-  # $users_absent = array_substract($all_users, $_users)
+  $users_absent = array_substract($all_users, $_users)
   ## Create a big hash containing user information (but then absent...)
-  # $absent_users = select_users($users_absent, $_user_uids, {}, {'ensure' => 'absent'})
-  # create_resources('accounts::hiera', $absent_users)
+  $absent_users = select_users($users_absent, $_user_uids, {}, {'ensure' => 'absent'})
+  create_resources('accounts::hiera', $absent_users)
   }
 
 }
