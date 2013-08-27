@@ -22,7 +22,8 @@ class accounts (
   $users         = hiera_array('accounts::users', []),
   $user_uids     = hiera_hash('accounts::user_uids', {}),
   $user_info     = hiera_hash('accounts::user_info', {}),
-  $user_defaults = hiera('accounts::user_defaults', {})
+  $user_defaults = hiera('accounts::user_defaults', {}),
+  $purge         = hiera('accounts::purge', false)
 ) {
 
   if $::puppetversion =~ /^3/ {
@@ -45,5 +46,14 @@ class accounts (
   $create_users = select_users($_users, $_user_uids, $_user_info, $user_defaults)
   create_resources('accounts::hiera', $create_users)
 
+  if $purge {
+  ## Gets all users that have a uid configured.
+  # $all_users = hash_keys($_user_uids)
+  ## Get the users that are not in the users array.
+  # $users_absent = array_substract($all_users, $_users)
+  ## Create a big hash containing user information (but then absent...)
+  # $absent_users = select_users($users_absent, $_user_uids, {}, {'ensure' => 'absent'})
+  # create_resources('accounts::hiera', $absent_users)
+  }
 
 }
