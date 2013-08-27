@@ -48,7 +48,7 @@ class accounts (
 
   if $purge {
   ## Gets all users that have a uid configured.
-  # $all_users = hash_keys($_user_uids)
+  $all_users = hash_keys($_user_uids)
   ## Get the users that are not in the users array.
   # $users_absent = array_substract($all_users, $_users)
   ## Create a big hash containing user information (but then absent...)
