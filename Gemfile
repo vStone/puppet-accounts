@@ -12,4 +12,8 @@ group :rake do
   gem 'hiera'
   gem 'hiera-puppet-helper', :github => 'vStone/hiera-puppet-helper'
 
+  if puppetversion =~ /^2/
+    gem 'hiera-puppet'
+  end
+
 end
