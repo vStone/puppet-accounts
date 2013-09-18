@@ -4,18 +4,26 @@
 #
 # === Parameters:
 #
-# $groups::       Array of groups that should be present.
+# [*groups*]
+#   Array of groups that should be present.
 #
-# $users::        Array of users that should be present.
+# [*users*]
+#   Array of users that should be present.
 #
-# $user_uids::    A hash table connecting usernames with their uids.
+# [*user_uids*]
+#   A hash table connecting usernames with their uids.
 #
-# $user_info::    A hash table with user information.
+# [*user_info*]
+#   A hash table with user information.
 #
-# === Todo:
+# [*user_defaults*]:
+#   A hash with parameters serving as defaults for all users.
 #
-# * TODO: Grab nested hiera (defined in multiple yaml definitions).
-#
+# [*purge*]
+#   If set to true (defaults to false), all users defined in the
+#   `user_uids` hash that are NOT present in `users` will be removed
+#   from the system. This removes the configured ssh keys from the
+#   users homefolder.
 #
 class accounts (
   $groups        = hiera_array('accounts::groups', []),
@@ -47,13 +55,13 @@ class accounts (
   create_resources('accounts::hiera', $create_users)
 
   if $purge {
-  ## Gets all users that have a uid configured.
-  $all_users = hash_keys($_user_uids)
-  ## Get the users that are not in the users array.
-  $users_absent = array_substract($all_users, $_users)
-  ## Create a big hash containing user information (but then absent...)
-  $absent_users = select_users($users_absent, $_user_uids, {}, {'ensure' => 'absent'})
-  create_resources('accounts::hiera', $absent_users)
+    ## Gets all users that have a uid configured.
+    $all_users = hash_keys($_user_uids)
+    ## Get the users that are not in the users array.
+    $users_absent = array_substract($all_users, $_users)
+    ## Create a big hash containing user information (but then absent...)
+    $absent_users = select_users($users_absent, $_user_uids, {}, {'ensure' => 'absent'})
+    create_resources('accounts::hiera', $absent_users)
   }
 
 }

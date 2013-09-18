@@ -13,7 +13,7 @@ ldap servers die (for example).
 
 ## Usage
 
-The module will look in 3 different places for user specific information:
+The module will look in several different places for user specific information:
 
 * accounts::user_uids
 
