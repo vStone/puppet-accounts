@@ -5,7 +5,12 @@ group :rake do
   gem 'puppet-lint'
   gem 'puppetlabs_spec_helper'
 
-  puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : '3.3'
+  puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : '3'
   gem 'puppet', "~> #{puppetversion}"
+
+  # https://tickets.puppetlabs.com/browse/PUP-3796
+  if puppetversion =~ /^3(?:\.?.*)?$/
+    gem 'safe_yaml', '~> 1.0.4'
+  end
 
 end
