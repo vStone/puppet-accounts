@@ -1,0 +1,13 @@
+{
+  "name": "vStone-accounts",
+  "version": "0.0.1",
+  "author": "Jan Vansteenkiste <jan@vstone.eu>",
+  "license": "Apache-2.0",
+  "summary": "Manage your (system) user accounts in hiera",
+  "source": "https://github.com/vStone/puppet-accounts",
+  "project_page": "https://github.com/vStone/puppet-accounts",
+  "issues_url": "https://github.com/vStone/puppet-accounts/issues",
+  "tags": ["accounts", "hiera"],
+  "operatingsystem_support": [],
+  "dependencies": []
+}
