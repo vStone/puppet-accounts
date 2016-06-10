@@ -7,23 +7,26 @@
 # Most parameters are a one-on-one mapping with the user resource.
 # Read the puppet documentation on their use.
 #
-# [*uid*]
+# [*uid*]: See `user::uid`.
 #
-# [*gid*]
+# [*gid*]: See `user::gid`.
 #
-# [*ensure*]
+# [*ensure*]: Create or remove the user. Allowed values are 'present' and 'absent'.
 #
-# [*groups*]
+# [*groups*]: See `user::groups`.
 #
-# [*home*]
+# [*home*]: See `user::home`.
 #
-# [*shell*]
+# [*shell*]: See `user::shell`.
 #
-# [*authorized_keys*]
+# [*authorized_keys*]: Content to put in the ssh authorized_keys file.
 #
-# [*password*]
+# [*password*]: See `user::password`.
+#
+# [*managehome*]: See `user::managehome`.
 #
 # [*extra_params*]: A hash with extra parameters assigned to the user resource.
+#
 #
 # === Usage:
 #
