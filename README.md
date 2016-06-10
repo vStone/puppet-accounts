@@ -47,6 +47,15 @@ A hash with default parameters to use.
 
 ## Advanced Usage
 
+### accounts::hiera_merge
+
+The hiera merge parameter can be used to force the accounts module to
+re-request the data from hiera using hiera_array and hiera_merge. This results
+in all data from different levels in your hierarchy in getting merged together
+before processing.
+
+### accounts::hiera::extra_params
+
 We use the accounts::hiera defined type as a wrapper to the user resource. It allows
 us to specify an additional hash with parameters that are passed through to the user
 resource. For example, if you would want to use `forcelocal => true` on all your resources,

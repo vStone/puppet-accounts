@@ -4,38 +4,44 @@
 #
 # === Parameters:
 #
-# [*groups*]
+# [*groups*]:
 #   Array of groups that should be present.
 #
-# [*users*]
+# [*users*]:
 #   Array of users that should be present.
 #
-# [*user_uids*]
+# [*user_uids*]:
 #   A hash table connecting usernames with their uids.
 #
-# [*user_info*]
+# [*user_info*]:
 #   A hash table with user information.
 #
 # [*user_defaults*]:
 #   A hash with parameters serving as defaults for all users.
 #
-# [*purge*]
+# [*purge*]:
 #   If set to true (defaults to false), all users defined in the
 #   `user_uids` hash that are NOT present in `users` will be removed
 #   from the system. This removes the configured ssh keys from the
 #   users homefolder.
 #
+# [*hiera_merge*]:
+#   When specifying users and groups on multiple levels in a hiera
+#   hierarchy, set this to true to refetch the parameters with
+#   either hiera_array or hiera_hash.
+#
+#
 class accounts (
-  $groups        = hiera_array('accounts::groups', []),
-  $users         = hiera_array('accounts::users', []),
-  $user_uids     = hiera_hash('accounts::user_uids', {}),
-  $user_info     = hiera_hash('accounts::user_info', {}),
-  $user_defaults = hiera('accounts::user_defaults', {}),
-  $purge         = hiera('accounts::purge', false)
+  $groups        = [],
+  $users         = [],
+  $user_uids     = {},
+  $user_info     = {},
+  $user_defaults = {},
+  $purge         = false,
+  $hiera_merge   = false,
 ) {
 
-  if $::puppetversion =~ /^3/ {
-    ## Since this is puppet 3, the values above have been initialized but without array/hash support.. redo!
+  if $hiera_merge {
     $_groups    = hiera_array('accounts::groups', [])
     $_users     = hiera_array('accounts::users', [])
     $_user_uids = hiera_hash('accounts::user_uids', {})
