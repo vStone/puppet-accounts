@@ -3,17 +3,14 @@ source 'https://rubygems.org'
 group :rake do
   gem 'rake'
   gem 'puppet-lint'
-  gem 'rspec'
-  gem 'rspec-puppet'
-
-  puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : '2.7'
-  gem 'puppet', "~> #{puppetversion}"
   gem 'puppetlabs_spec_helper'
-  gem 'hiera'
-  gem 'hiera-puppet-helper', :github => 'vStone/hiera-puppet-helper'
 
-  if puppetversion =~ /^2/
-    gem 'hiera-puppet'
+  puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : '3'
+  gem 'puppet', "~> #{puppetversion}"
+
+  # https://tickets.puppetlabs.com/browse/PUP-3796
+  if puppetversion =~ /^3(?:\.?.*)?$/
+    gem 'safe_yaml', '~> 1.0.4'
   end
 
 end

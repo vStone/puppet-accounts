@@ -1,6 +1,6 @@
 {
   "name": "vStone-accounts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Jan Vansteenkiste <jan@vstone.eu>",
   "license": "Apache-2.0",
   "summary": "Manage your (system) user accounts in hiera",

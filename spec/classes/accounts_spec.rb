@@ -14,8 +14,8 @@ describe 'accounts' do
         }
       }
       it do
-        should contain_user('foo').with_ensure('present')
-        should_not contain_user('bar')
+        is_expected.to contain_user('foo').with_ensure('present')
+        is_expected.not_to contain_user('bar')
       end
     end
 
@@ -30,8 +30,8 @@ describe 'accounts' do
         }
       }
       it do
-        should contain_user('foo').with_ensure('present')
-        should contain_user('bar').with_ensure('absent')
+        is_expected.to contain_user('foo').with_ensure('present')
+        is_expected.to contain_user('bar').with_ensure('absent')
       end
     end
   end
