@@ -4,6 +4,9 @@
 #
 # === Parameters:
 #
+# Most parameters are a one-on-one mapping with the user resource.
+# Read the puppet documentation on their use.
+#
 # [*uid*]
 #
 # [*gid*]
@@ -19,6 +22,8 @@
 # [*authorized_keys*]
 #
 # [*password*]
+#
+# [*extra_params*]: A hash with extra parameters assigned to the user resource.
 #
 # === Usage:
 #
@@ -37,17 +42,24 @@ define accounts::hiera (
   $managehome      = true,
   $authorized_keys = undef,
   $password        = undef,
+  $extra_params    = {},
 ) {
 
-  user {$name:
-    ensure     => $ensure,
-    uid        => $uid,
-    gid        => $gid,
-    groups     => $groups,
-    home       => $home,
-    shell      => $shell,
-    managehome => $managehome,
-  }
+
+  create_resources('user',
+    {
+      "${name}" => {
+        'ensure'     => $ensure,
+        'uid'        => $uid,
+        'gid'        => $gid,
+        'groups'     => $groups,
+        'home'       => $home,
+        'shell'      => $shell,
+        'managehome' => $managehome,
+      }
+    },
+    $extra_params
+  )
 
   if ($password and $::virtual != 'xen0') {
     User[$title] {
@@ -62,9 +74,9 @@ define accounts::hiera (
   }
 
   file {"/home/${name}/.ssh":
-    ensure  => $dir_ensure,
-    mode    => '0700',
-    backup  => false,
+    ensure => $dir_ensure,
+    mode   => '0700',
+    backup => false,
   }
   file {"/home/${name}/.ssh/authorized_keys":
     ensure  => $ensure,

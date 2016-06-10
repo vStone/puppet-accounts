@@ -45,3 +45,16 @@ NOT in accounts::users will be PURGED from the system.
 
 A hash with default parameters to use.
 
+## Advanced Usage
+
+We use the accounts::hiera defined type as a wrapper to the user resource. It allows
+us to specify an additional hash with parameters that are passed through to the user
+resource. For example, if you would want to use `forcelocal => true` on all your resources,
+you can use extra_params in combination with the `user_defaults`.
+
+
+```yaml
+accounts::user_defaults:
+  extra_params:
+    forcelocal: true
+```
