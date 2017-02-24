@@ -36,18 +36,17 @@
 # Unless you want to add stuff, in that case, pull requests welcome!
 #
 define accounts::hiera (
-  $uid,
-  $gid             = 100,
-  $ensure          = 'present',
-  $groups          = [],
-  $home            = "/home/${name}",
-  $shell           = '/bin/bash',
-  $managehome      = true,
-  $authorized_keys = undef,
-  $password        = undef,
-  $extra_params    = {},
+  Integer[0]                  $uid,
+  Integer[0]                  $gid             = 100,
+  Enum['present','absent']    $ensure          = 'present',
+  Array                       $groups          = [],
+  String                      $home            = "/home/${name}",
+  String                      $shell           = '/bin/bash',
+  Boolean                     $managehome      = true,
+  Optional[String]            $authorized_keys = undef,
+  Optional[String]            $password        = undef,
+  Hash                        $extra_params    = {},
 ) {
-
 
   create_resources('user',
     {
