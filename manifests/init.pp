@@ -32,13 +32,13 @@
 #
 #
 class accounts (
-  $groups        = [],
-  $users         = [],
-  $user_uids     = {},
-  $user_info     = {},
-  $user_defaults = {},
-  $purge         = false,
-  $hiera_merge   = false,
+  Array[String]       $groups        = [],
+  Array[String]       $users         = [],
+  Hash[String,Integer] $user_uids     = {},
+  Hash[String,Hash]   $user_info     = {},
+  Hash                $user_defaults = {},
+  Boolean             $purge         = false,
+  Boolean             $hiera_merge   = false,
 ) {
 
   if $hiera_merge {
