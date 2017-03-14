@@ -47,12 +47,33 @@ A hash with default parameters to use.
 
 ## Advanced Usage
 
-### accounts::hiera_merge
+### Overriding the merge strategies
 
-The hiera merge parameter can be used to force the accounts module to
-re-request the data from hiera using hiera_array and hiera_merge. This results
-in all data from different levels in your hierarchy in getting merged together
-before processing.
+Since the switch to hiera 5, you can override the merge behaviours (previously with
+hiera_array and hiera_hash) by setting lookup_options in your hiera data files.
+
+To disable the default behaviour (disable hiera 'merge'), place the following config in your
+hierarchy or call the hiera class with whatever values you want directly.
+
+```yaml
+lookup_options:
+  accounts::groups:
+    merge:
+      strategy: first
+
+  accounts::users:
+    merge:
+      strategy: first
+
+  accounts::user_uids:
+    merge:
+      strategy: first
+
+  accounts::user_info:
+    merge:
+      strategy: first
+
+```
 
 ### accounts::hiera::extra_params
 
