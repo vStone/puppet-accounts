@@ -5,7 +5,7 @@ group :rake do
   gem 'puppet-lint'
   gem 'puppetlabs_spec_helper'
 
-  puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : '3'
+  puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : '4'
   gem 'puppet', "~> #{puppetversion}"
 
   # https://tickets.puppetlabs.com/browse/PUP-3796
