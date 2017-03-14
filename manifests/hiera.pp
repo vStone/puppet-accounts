@@ -75,31 +75,36 @@ define accounts::hiera (
     default   => $ensure,
   }
 
-  file {"/home/${name}/.ssh":
+  file {"${home}/.ssh":
     ensure => $dir_ensure,
     mode   => '0700',
     backup => false,
   }
-  file {"/home/${name}/.ssh/authorized_keys":
+  file {"${home}/.ssh/authorized_keys":
     ensure  => $ensure,
     mode    => '0600',
     content => $authorized_keys,
     backup  => false,
   }
+  file {"${home}/.ssh/known_hosts":
+    ensure => $ensure,
+    mode   => '0600',
+    backup => false,
+  }
 
   if $ensure != 'absent' {
-    File["/home/${name}/.ssh"] {
+    File["${home}/.ssh"] {
       owner   => $name,
       group   => $gid,
       require => User[$name],
     }
-    File["/home/${name}/.ssh/authorized_keys"] {
+    File["${home}/.ssh/authorized_keys"] {
       owner   => $name,
       group   => $gid,
     }
   }
   else {
-    File["/home/${name}/.ssh"] {
+    File["${home}/.ssh"] {
       force => true,
     }
   }
