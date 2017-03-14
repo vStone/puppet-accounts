@@ -1,0 +1,17 @@
+---
+lookup_options:
+  accounts::groups:
+    merge:
+      strategy: unique
+
+  accounts::users:
+    merge:
+      strategy: unique
+
+  accounts::user_uids:
+    merge:
+      strategy: deep
+
+  accounts::user_info:
+    merge:
+      strategy: deep
