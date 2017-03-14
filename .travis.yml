@@ -1,11 +1,9 @@
 language: ruby
 before_install: gem install bundler -v '~> 1.6.0' --no-ri --no-rdoc
 rvm:
-  - 1.9.3
-  - 2.2
+  - 2.3
 
 env:
-  - PUPPET_VERSION="3"
   - PUPPET_VERSION="4"
 
 branches:
