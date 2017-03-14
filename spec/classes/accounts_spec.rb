@@ -8,7 +8,7 @@ describe 'accounts' do
         {
           :purge         => false,
           :users         => ['foo'],
-          :user_uids     => { 'foo' => '1000', 'bar' => '1001',},
+          :user_uids     => { 'foo' => 1000, 'bar' => 1001,},
           :user_info     => { },
           :user_defaults => { },
         }
@@ -24,7 +24,7 @@ describe 'accounts' do
         {
           :purge         => true,
           :users         => ['foo'],
-          :user_uids     => { 'foo' => '1000', 'bar' => '1001',},
+          :user_uids     => { 'foo' => 1000, 'bar' => 1001,},
           :user_info     => { },
           :user_defaults => { },
         }
