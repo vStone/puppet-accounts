@@ -9,5 +9,11 @@
   "issues_url": "https://github.com/vStone/puppet-accounts/issues",
   "tags": ["accounts", "hiera"],
   "operatingsystem_support": [],
-  "dependencies": []
+  "dependencies": [],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.9.3 < 5.0.0"
+    }
+  ]
 }
