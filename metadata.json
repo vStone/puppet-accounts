@@ -2,18 +2,28 @@
   "name": "vStone-accounts",
   "version": "1.0.0",
   "author": "Jan Vansteenkiste <jan@vstone.eu>",
-  "license": "Apache-2.0",
   "summary": "Manage your (system) user accounts in hiera",
+  "license": "Apache-2.0",
   "source": "https://github.com/vStone/puppet-accounts",
   "project_page": "https://github.com/vStone/puppet-accounts",
   "issues_url": "https://github.com/vStone/puppet-accounts/issues",
-  "tags": ["accounts", "hiera"],
-  "operatingsystem_support": [],
-  "dependencies": [],
+  "dependencies": [
+
+  ],
+  "operatingsystem_support": [
+
+  ],
   "requirements": [
     {
       "name": "puppet",
       "version_requirement": ">= 4.9.3"
     }
-  ]
+  ],
+  "tags": [
+    "accounts",
+    "hiera"
+  ],
+  "pdk-version": "1.18.1",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#1.18.1",
+  "template-ref": "tags/1.18.1-0-g3d2e75c"
 }
